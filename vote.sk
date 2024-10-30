@@ -1,0 +1,93 @@
+# 投票システム
+# Written by Kurumi1011
+
+on skript start:
+	delete {vote}
+	delete {vote.vote::*}
+command /startvote <text> <text> <text>:
+	usage: /startvote 議題 選択肢1 選択肢2
+	trigger:
+		if {vote} is set:
+			send "&c現在投票中です"
+			stop
+		{vote} is not set
+		set {vote} to arg 1
+		broadcast "&8[&e&lVOTE&8] &7投票を執り行います"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 seconds
+		broadcast "&8[&e&lVOTE&8] &7今回の議題は「&d%arg 1%&7」です &bby %player%"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 seconds
+		broadcast "&8[&e&lVOTE&8] &7以下の選択肢から、一つ選んで投票してください"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 seconds
+		broadcast " "
+		command "tellraw @a {""text"":""&7「&e%arg 2%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote 1""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
+		broadcast " "
+		command "tellraw @a {""text"":""&7「&e%arg 3%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote 2""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
+		broadcast " "
+		broadcast "&8[&e&lVOTE&8] &7投票時間は30秒です"
+		wait 25 seconds
+		broadcast "&8[&e&lVOTE&8] &7投票時間、残り5秒"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &7投票時間、残り4秒"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &7投票時間、残り3秒"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &7投票時間、残り2秒"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &7投票時間、残り1秒"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 seconds
+		set {_1} to 0
+		set {_2} to 0
+		set {_t1} to ""
+		set {_t2} to ""
+		loop all players:
+			set {_p::%loop-player%} to loop-player
+		loop {vote.vote::*}:
+			if loop-value is 1:
+				add 1 to {_1}
+				set {_t1} to "%{_t1}% %{_p::%loop-index%}%"
+			else:
+				add 1 to {_2}
+				set {_t2} to "%{_t2}% %{_p::%loop-index%}%"
+		if {_1} > {_2}:
+			set {_w} to arg 2
+		else if {_1} = {_2}:
+			set {_w} to "引き分け"
+		else:
+			set {_w} to arg 3
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &d投票終了！"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 second
+		broadcast "&8[&e&lVOTE&8] &7結果発表です..."
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 second
+		broadcast "&8[&e&lVOTE&8] &7勝者は..."
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 second
+		broadcast "&8[&e&lVOTE&8] &e議題「%arg 1%」&7「&d%{_w}%&7」&eの勝利！！！！！"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 3 second
+		broadcast "&8[&e&lVOTE&8] &e議題「%arg 1%」&7内訳: &7「&d%arg 2%&7」&e%{_1}%票 &7「&d%arg 3%&7」&e%{_2}%票"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 1 second
+		broadcast "&8[&e&lVOTE&8] &e議題「%arg 1%」&7内訳: &7「&d%arg 2%&7」&7%{_t1}%が投票"
+		broadcast "&8[&e&lVOTE&8] &7「&d%arg 3%&7」&7%{_t2}%が投票"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		wait 5 seconds
+		broadcast "&8[&e&lVOTE&8] &7投票は以上です、ありがとうございました。"
+		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
+		delete {vote}
+		delete {vote.vote::*}
+command /vote <integer>:
+	trigger:
+		{vote.vote::%player%} is not set
+		set {vote.vote::%player%} to arg 1
+		send "&b投票しました" to player
