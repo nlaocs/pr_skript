@@ -5,5 +5,6 @@ on join:
     send formatted "<link:https://github.com/nlaocs/pr_skript/>&nこのリポジトリ<reset>にプルリクエストを送ることで、"
     send "各自が自由に機能を追加することができます。"
     send "ゲーム性が壊れるコード(OP取得、クリエ取得等)以外ならマージします。"
+    send "FLY等の機能追加は大歓迎です。"
     send "公開直後なので、同期のシステムが不安定かもしれませんが、"
     send "ご了承ください。"
