@@ -7,9 +7,10 @@ damage:
     set {_d} to {_p}'s health - damage
     {_d} <= 0
     set {_require} to {_d}*{@xp}*-1
+    set {_pExp} to calcExperienceDecimal({_p}'s level + {_p}'s level progress)
 
-    if {_p}'s exp >= {_require}:
-        remove {_require} from {_p}'s exp
+    if {_pExp} >= {_require}:
+        command "/xp -%{_require}% %{_p}%"
         set damage to {_p}'s health - 0.5
 
 # idea by https://github.com/SkriptLang/Skript/blob/ba32d7ad48edb8e33d5f5d2e44d03bba94ffb2de/src/main/java/ch/njol/skript/classes/data/DefaultFunctions.java#L502
