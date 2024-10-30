@@ -2,12 +2,12 @@ on first join:
     give player 1 stick
 
 function menu(p: player):
-    set {_inventory} to a chest inventory named "menu" with 1 row
+    set {_inventory} to a chest inventory named "&fmenu" with 1 row
     set slot 0 of {_inventory} to a flint named "&fgithub link"
     open {_inventory} to {_p}
 
 on inventory click:
-    if name of event-inventory is "menu":
+    if name of event-inventory is "&fmenu":
         cancel event
         send "%name of event-item%"
         send "%name of event-slot%"
