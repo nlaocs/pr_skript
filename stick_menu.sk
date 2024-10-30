@@ -9,8 +9,6 @@ function menu(p: player):
 on inventory click:
     if name of event-inventory is "&fmenu":
         cancel event
-        send "%name of event-item%"
-        send "%name of event-slot%"
         if name of event-item is "&fgithub link":
             send formatted "<link:https://github.com/nlaocs/pr_skript/>&nhttps://github.com/nlaocs/pr_skript/<reset>"
 
