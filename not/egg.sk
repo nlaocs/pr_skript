@@ -1,0 +1,4 @@
+#Explosive Egg
+projectile hit:
+    projectile is egg
+    explosion of power 3 at event-location with fire 
