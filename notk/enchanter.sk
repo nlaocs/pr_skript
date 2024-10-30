@@ -1,0 +1,25 @@
+options:
+    xp: 200
+
+damage:
+    victim is a player
+    set {_p} to victim
+    set {_d} to {_p}'s health - damage
+    {_d} <= 0
+    set {_require} to {_d}*{@xp}*-1
+    set {_pExp} to calcExperienceDecimal({_p}'s level + {_p}'s level progress)
+
+    if {_pExp} >= {_require}:
+        command "/xp -%{_require}% %{_p}%"
+        set damage to {_p}'s health - 0.5
+
+# idea by https://github.com/SkriptLang/Skript/blob/ba32d7ad48edb8e33d5f5d2e44d03bba94ffb2de/src/main/java/ch/njol/skript/classes/data/DefaultFunctions.java#L502
+function calcExperienceDecimal(level: number) :: number:
+    if {_level} <= 0:
+        return 0
+    else if check [{_level} > 0] -> [{_level} <= 15]:
+        return {_level} * {_level} + 6 * {_level}
+    else if check [{_level} > 15] -> [{_level} <= 30]:
+        return 2.5 * {_level} * {_level} - 40.5 * {_level} + 360
+    else:
+        return 4.5 * {_level} * {_level} - 162.5 * {_level} + 2220
