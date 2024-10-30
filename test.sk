@@ -1,3 +1,0 @@
-command /test1:
-    trigger:
-        send "aaa"
