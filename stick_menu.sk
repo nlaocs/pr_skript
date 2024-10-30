@@ -8,6 +8,7 @@ function menu(p: player):
 
 on inventory click:
     if name of event-inventory is "menu":
+        cancel event
         if name of event-slot is "github link":
             send formatted "<link:https://github.com/nlaocs/pr_skript/>&nhttps://github.com/nlaocs/pr_skript/<reset>"
 
