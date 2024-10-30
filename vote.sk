@@ -22,9 +22,9 @@ command /startvote <text> <text> <text>:
 		command "/playsound minecraft:ui.button.click ambient @a ~ ~ ~ 1.0 1.0 1.0"
 		wait 5 seconds
 		broadcast " "
-		command "tellraw @a {""text"":""&7「&e%arg 2%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote-vote 1""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
+		command "tellraw @a {""text"":""&7「&e%arg 2%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote 1""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
 		broadcast " "
-		command "tellraw @a {""text"":""&7「&e%arg 3%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote-vote 2""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
+		command "tellraw @a {""text"":""&7「&e%arg 3%&7」&8<*> &3<<< &bクリックで投票 &3>>>"",""clickEvent"":{""action"":""run_command"",""value"":""/vote 2""},""hoverEvent"":{""action"":""show_text"",""value"":""&bクリックで投票します""}}"
 		broadcast " "
 		broadcast "&8[&e&lVOTE&8] &7投票時間は30秒です"
 		wait 25 seconds
