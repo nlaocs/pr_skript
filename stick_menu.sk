@@ -9,7 +9,7 @@ function menu(p: player):
 on inventory click:
     if name of event-inventory is "menu":
         cancel event
-        if name of event-slot is "&fgithub link":
+        if name of event-item is "&fgithub link":
             send formatted "<link:https://github.com/nlaocs/pr_skript/>&nhttps://github.com/nlaocs/pr_skript/<reset>"
 
 on right click with stick:
