@@ -3,7 +3,7 @@ on first join:
 
 function menu(p: player):
     set {_inventory} to a chest inventory named "menu" with 1 row
-    set slot 0 of {_inventory} to a stone named "github link"
+    set slot 0 of {_inventory} to a flint named "&fgithub link"
     open {_inventory} to {_p}
 
 on inventory click:
