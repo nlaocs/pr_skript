@@ -1,0 +1,15 @@
+on first join:
+    give player 1 stick
+
+function menu(p: player):
+    set {_inventory} to a chest inventory named "menu" with 1 row
+    set slot 0 of {_inventory} to a stone named "github link"
+    open {_inventory} to {_p}
+
+on inventory click:
+    if name of event-inventory is "menu":
+        if name of event-slot is "github link":
+            send formatted "<link:https://github.com/nlaocs/pr_skript/>&nhttps://github.com/nlaocs/pr_skript/<reset>"
+
+on right click with stick:
+    menu(player)
