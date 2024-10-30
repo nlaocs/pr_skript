@@ -1,0 +1,2 @@
+every 5 minutes:
+    send formatted "&6[tips] &f<link:https://github.com/nlaocs/pr_skript/>&n鯖のリポジトリ<reset>" to all players
