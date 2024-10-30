@@ -1,5 +1,5 @@
 on join:
-    wait 1 seconds
+    wait 2 seconds
     send formatted "<link:https://github.com/nlaocs/pr_skript/>&nこちらのリポジトリ<reset>のmainブランチは、"
     send "このサーバーのskriptと同期されています。"
     send formatted "<link:https://github.com/nlaocs/pr_skript/>&nこのリポジトリ<reset>にプルリクエストを送ることで、"
