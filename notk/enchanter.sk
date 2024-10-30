@@ -1,0 +1,13 @@
+options:
+    xp: 200
+
+damage:
+    victim is a player
+    set {_p} to victim
+    set {_d} to {_p}'s health - damage
+    {_d} <= 0
+    set {_require} to {_d}*{@xp}*-1
+
+    if {_p}'s exp >= {_require}:
+        remove {_require} from {_p}'s exp
+        set damage to {_p}'s health - 0.5
