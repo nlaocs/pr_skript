@@ -1,2 +1,5 @@
 on right click with stick:
     give player 1 apple
+
+on left click with stick:
+    give player 1 wheat seeds
